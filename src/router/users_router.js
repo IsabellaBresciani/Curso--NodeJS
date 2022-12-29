@@ -8,6 +8,9 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const user = req.body
+    if(user.name === null){
+        console.log("no se agrego nada")
+    }
     users.push(user)
     res.send({status: "aproveed", message:"User added succesfuly!"})
 })
