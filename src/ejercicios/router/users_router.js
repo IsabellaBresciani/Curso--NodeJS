@@ -3,6 +3,7 @@ const router = Router()
 const users = []
 
 router.get('/', (req, res) => {
+    console.log(req.dato1)
     res.json(users)
 })
 

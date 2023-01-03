@@ -1,4 +1,5 @@
-class ProductManager{
+import fs from 'fs'
+class ProductManager2{
     constructor (){
         this.products = []
     }
@@ -59,21 +60,4 @@ class ProductManager{
         }   
     }
 
-//uso ProductManager como molde y creo un nuevo objeto
-let productos = new ProductManager()
-
-//Agrego los elementos
-productos.addProduct("Pantuflas","suaves y comodas","$3000", "", 1, 300);
-productos.addProduct("Pantalon","XL","$8000", "", 1, 200);
-productos.addProduct("Remera","M","$1000", "", 3, 200);
-productos.addProduct("Remera01","ML","$11000", "", 4, 200);
-console.log(productos);
-
-//metodo que retorna elemento por id.
-let id03 = productos.getElementById(3)
-console.log("El elemento con id 3 es el siguiente:");
-console.log(id03);
-
-//metodo que retorna todos los valores incluidos en el array productos.
-let productos02 = productos.getProducts()
-console.log(productos02)
+export default ProductManager2

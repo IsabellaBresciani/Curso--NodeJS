@@ -1,27 +1,16 @@
-const express = require('express')
+import express from 'express'
+import prodRouter from './routers/router_products.js'
+import cartRouter from './routers/router_carts.js'
+
+
 const app = express()
-const ProductManager = require('./productManager')
-const manager = new ProductManager('products.json')
+app.use(express.json())
+app.use('/static', express.static('public'))
+//app.use(express.urlencoded({extended:true}))
 
-app.get('/', async (request, response)=>{
-   const products = await manager.getProducts() 
-   response.json(products)
-})
 
-app.get('/add', async (request, response)=>{
-    const body = request.query
-    const obj = await manager.addProduct(body) 
-    response.json(obj)
-})
-
-app.get('/bienvenida', (request, response)=>{
-    response.send('<h1 style="color: blue">Saludos desde coderhouse</h1>')
-})
-
-app.get('/usuario', (request, response)=>{
-    response.send({name: "Isabella", apellido: "Bresciani", edad: 21})
-})
-
+app.use('/api/products', prodRouter)
+app.use('/api/carts', cartRouter)
 
 app.listen(8080, ()=>{
     console.log('El servidor esta corriendo')
